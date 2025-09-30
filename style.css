@@ -1,0 +1,224 @@
+:root {
+  --bg: #fbfbfb;
+  --panel: #ffffff;
+  --ink: #000000;
+  --muted: #000000;
+  --brand: #ffffff;
+  --accent: #22c55e;
+  --warn: #ef4444;
+  --line: #000000;
+  --chip: #cdcdcd;
+  --focus: #464646;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: white;
+  color: var(--ink);
+  font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    "Helvetica Neue", Arial;
+}
+.wrap {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+.card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 35%);
+}
+.header {
+  padding: 22px 22px 12px;
+  border-bottom: 1px dashed var(--line);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand .logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: radial-gradient(110% 110% at 20% 20%, #ff0000, #730000 45%, #330909 70%);
+  box-shadow: 0 8px 24px rgba(53, 82, 255, 0.35);
+}
+h1 {
+  font-size: 18px;
+  margin: 0;
+}
+.subtitle {
+  color: var(--muted);
+  font-size: 12px;
+}
+form {
+  padding: 18px;
+}
+.grid {
+  display: grid;
+  gap: 14px;
+}
+.grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .grid.cols-2,
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 14px 8px;
+  background: linear-gradient(180deg, var(--chip), #cbcbcb1c);
+}
+legend {
+  padding: 0 8px;
+  color: #000000;
+  font-weight: 600;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+.req::after {
+  content: " *";
+  color: #ff0000;
+}
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  outline: none;
+}
+textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(106, 167, 255, 0.25);
+}
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.documentNo {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #000000;
+}
+.help {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+.radio-wrap,
+.check-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.radio-item,
+.check-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+}
+.footer {
+  padding: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-top: 1px dashed var(--line);
+  justify-content: flex-end;
+}
+button {
+  border: 1px solid #ffffff;
+  background: #d1d1d1;
+  color: #000000;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.primary {
+  background: linear-gradient(180deg, #5699ff, #0009ff);
+  border-color: #ffffff;
+}
+.success {
+  background: linear-gradient(180deg, #18b760, #179f55);
+  border-color: #189a53;
+}
+.danger {
+  background: linear-gradient(180deg, #cb0000, #ff0000);
+  border-color: #ffffff;
+}
+button:focus {
+  outline: 3px solid var(--focus);
+}
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 800px) {
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+.note {
+  font-size: 12px;
+  color: #ff0000;
+}
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 8px 0;
+}
+.sig-pad {
+  height: 90px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 18px,
+    rgba(255, 255, 255, 0.04) 18px,
+    rgba(255, 255, 255, 0.04) 19px
+  );
+}
