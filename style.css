@@ -4,15 +4,15 @@
   --ink: #0F172A;
   --muted: #64748B;
   --brand: #FFFFFF;
-  --accent: #3B82F6;   /* primary / progress */
+  --accent: #3B82F6;
   --success: #10B981;
   --warn: #F59E0B;
   --error: #EF4444;
   --line: #E2E8F0;
-  --focus: #1D4ED8;    /* hover / focus ring */
+  --focus: #1D4ED8;
 }
 
-/* Base */
+
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -22,7 +22,6 @@ body {
   font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
 }
 
-/* Layout */
 .wrap {
   max-width: 1100px;
   margin: 21px auto;
@@ -48,7 +47,7 @@ h1 { font-size: 18px; margin: 0; }
 .subtitle { color: var(--muted); font-size: 12px; }
 form { padding: 18px; }
 
-/* Grid */
+
 .grid { display: grid; gap: 14px; }
 .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -56,12 +55,11 @@ form { padding: 18px; }
   .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
 }
 
-/* Fieldset */
+
 fieldset {
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px 14px 8px;
-  /* background: linear-gradient(180deg, #d1d1d1, #cbcbcb1c); */
   margin-top: 10px;
 }
 legend {
@@ -73,7 +71,7 @@ legend {
   font-weight: 600;
 }
 
-/* Labels & inputs */
+
 label { display: block; font-weight: 600; margin: 8px 0 6px; }
 .req::after { content: " *Required"; color: var(--error); }
 input[type="text"],
@@ -108,7 +106,7 @@ input:focus, select:focus, textarea:focus {
 }
 .help { color: var(--muted); font-size: 12px; margin-top: 6px; }
 
-/* Choice chips */
+
 .radio-wrap, .check-wrap { display: flex; flex-wrap: wrap; gap: 12px; }
 .radio-item, .check-item {
   display: flex;
@@ -118,11 +116,9 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid var(--line);
   border-radius: 10px;
   width: max-content;
-  /* max-width: 6vh; */
   background: #FFFFFF;
 }
 
-/* Footer buttons (legacy) */
 .footer {
   padding: 16px;
   display: flex;
@@ -143,7 +139,6 @@ button {
 .danger  { background: var(--error); color: #FFFFFF; border-color: #B91C1C; }
 button:focus { outline: 3px solid rgba(29, 78, 216, 0.6); }
 
-/* Two-column helper */
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
 
@@ -156,7 +151,6 @@ button:focus { outline: 3px solid rgba(29, 78, 216, 0.6); }
   background: repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(15, 23, 42, 0.03) 18px, rgba(15, 23, 42, 0.03) 19px);
 }
 
-/* Radios (custom indicator) */
 input[type="radio"] { display: grid; place-content: center; }
 input[type="radio"]::before {
   content: "";
@@ -167,17 +161,12 @@ input[type="radio"]::before {
 }
 input[type="radio"]:checked::before { transform: scale(1); }
 
-/* ────────────────────────────────────────────────────────────── */
-/*           Progress Steps & Wizard Navigation (Nuevo)          */
-/* ────────────────────────────────────────────────────────────── */
 
-/* Hide steps by default; JS shows the current */
 fieldset.step { display: none; }
 
-/* Simple utility to match JS toggling */
 .hidden { display: none !important; }
 
-/* Progress bar */
+
 #progressBar {
   height: 8px;
   background: var(--accent);
@@ -186,7 +175,7 @@ fieldset.step { display: none; }
   border-radius: 999px;
 }
 
-/* Steps list (dots/tabs) */
+
 #progressSteps {
   margin-top: 12px;
   display: grid;
@@ -215,7 +204,6 @@ fieldset.step { display: none; }
   border-color: var(--focus);
 }
 
-/* Wizard navigation buttons (per-step) */
 .btn-prev, .btn-next, .btn-finish {
   padding: 10px 14px;
   border-radius: 12px;
@@ -233,7 +221,6 @@ fieldset.step { display: none; }
 .btn-finish:hover { filter: brightness(0.95); }
 .btn-prev:active, .btn-next:active, .btn-finish:active { transform: translateY(1px); }
 
-/* Print styles: show all steps and hide UI controls */
 @media print {
   #progressWrapper, .btn-prev, .btn-next, .btn-finish { display: none !important; }
   fieldset.step { display: block !important; page-break-inside: avoid; }
