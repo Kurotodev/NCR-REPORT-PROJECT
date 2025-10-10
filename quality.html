@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR - Quality Rep</title>
+    <link rel="stylesheet" href="nic-style.css">
+</head>
+
+<body class="container">
+    <header class="header">
+        <img src="./Images/logo-transparent.png" alt="Crossfire Canada" width="180px" height="" />
+        <ul>
+            <li><a class="logout">Logout&#x23FB;</a></li>
+        </ul>
+    </header>
+
+    <div class="content-wrap">
+        <aside class="sidebar">
+            <h3>NCR</h3>
+            <form>
+                <ul class="form-nav">
+                    <li><a>Quality Rep.</a></li>
+                    <li><a>Engineering</a></li>
+                    <li><a>Purchasing</a></li>
+                </ul>
+            </form>
+        </aside>
+        <main>
+            <form id="form-quality">
+                <fieldset>
+                    <legend class="req">Identify Process Applicable:</legend>
+                    
+                    <label class="radio-item">
+                        <input type="radio" name="idprocessapp" required>
+                        Supplier/Rec-Insp PO
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="idprocessapp" required>
+                        WIP (Production Order)
+                    </label>
+                </fieldset>
+                    
+                <fieldset>
+                    <div>
+                        <label for="suppliername" class="req">Supplier Name</label>
+                        <input id="suppliername" name="suppliername" type="text" placeholder="Write supplier name" required />
+                    </div>
+                    
+                    <div>
+                        <label for="ncrno" class="req">NCR No.</label>
+                        <input id="ncrno"  name="ncrno" type="text" placeholder="Required NCR No." required />
+                    </div>
+                    
+                    <div>
+                        <label for="poprod" class="req">PO or Prod. No.</label>
+                        <input id="poprod" name="poprod" type="text" placeholder="Required" required />
+                    </div>
+                    
+                    <div>
+                        <label for="salesorderno" class="req">Sales Order No.</label>
+                        <input id="salesorderno" name="salesorderno" type="text" placeholder="Required" required />
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label for="descriptionitem" class="req">Description of Item (including SAP No.)</label>
+                    <input id="descriptionitem" name="descriptionitem" type="text" placeholder="Required" required />
+                </div>
+                
+                <div>
+                    <label for="department" class="req">Description of Defect</label>
+                    <textarea id="department" name="department" placeholder="In as much detail as possible" required=""></textarea>
+                </div>
+                <fieldset>
+                    <legend class="req">Item marked Nonconforming</legend>
+
+                    <label class="radio-item">
+                        <input type="radio" name="itemmarkednonconforming" required> Yes
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="itemmarkednonconforming" required> No
+                    </label>
+                </fieldset>
+
+                <div>
+                    <label for="qualityrepresentative" class="req">Quality Representative's Name</label>
+                    <input id="qualityrepresentative" name="qualityrepresentative" type="text" placeholder="Required" required />
+                </div>
+                
+                <div>
+                    <label for="date" class="req">Date</label>
+                    <input id="date" name="date" type="date" required />
+                </div>
+                
+                <span class="note">
+                Completed NCR to be forwarded to HBC Engineering and
+                Operations Manager complete with any relevant documents
+                attached (pictures, actual measurements, material certs, etc.)
+                </span>
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>&copy;Crossfire Canada</p>
+    </footer>
+</body>
+</html>
