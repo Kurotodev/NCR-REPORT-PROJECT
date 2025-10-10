@@ -1,234 +1,170 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CrossFire | NCR - Nonconforming Report</title>
-    <script src="script.js"></script> <!-- JS FUNCTIONS -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> <!-- CSS FRAMEWORK -->
-    <link rel="stylesheet" href="style.css">
-    <!-- FONT AWESOME ICONS PROVIDE ICONS DESIGN -->
-    <link
-    rel="stylesheet"
-    href="https://site-assets.fontawesome.com/releases/v7.0.0/css/all.css"
-    />
-    <link
-    rel="stylesheet"
-    href="https://site-assets.fontawesome.com/releases/v7.0.0/css/sharp-solid.css"
-    />
-    <link
-    rel="stylesheet"
-    href="https://site-assets.fontawesome.com/releases/v7.0.0/css/sharp-regular.css"
-    />
-    <link
-    rel="stylesheet"
-    href="https://site-assets.fontawesome.com/releases/v7.0.0/css/sharp-light.css"
-    />
-    <link
-    rel="stylesheet"
-    href="https://site-assets.fontawesome.com/releases/v7.0.0/css/duotone.css"
-    />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CrossFire | NCR - Nonconforming Report</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/all.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/sharp-solid.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/sharp-regular.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/sharp-light.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.0/css/duotone.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="wrap">
     <div class="card" aria-label="NCR form">
       <div class="header">
         <div class="brand">
-          <img class="logo" alt="Canada" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Canada_wordmark.svg/2560px-Canada_wordmark.svg.png">
+          <img class="logo" alt="Canada" src="./image.jpg" />
           <div>
             <h1>CrossFire — Internal Process Document</h1>
-            <div class="subtitle">Non-Conformance Report</div>
+            <div class="subtitle">Non‑Conformance Report</div>
           </div>
         </div>
-
         <div style="display: flex; align-items: center; gap: 10px;">
-            <select style="width: auto;">
-                <option>EN</option>
-                <option>FR</option>
-            </select>
-            <div class="documentNo">Document No. OPS-00011</div>
+          <select style="width: auto;">
+            <option>EN</option>
+            <option>FR</option>
+          </select>
+          <div class="documentNo">Document No. OPS-00011</div>
         </div>
       </div>
 
+      <div id="progressWrapper" class="w-full mb-6 px-4">
+        <div class="flex items-center justify-between mb-2 text-sm">
+          <span class="font-medium">Progress</span>
+          <span id="progressText" class="tabular-nums">0% (Step 1 of 4)</span>
+        </div>
+        <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div id="progressBar" class="h-2 bg-blue-600 transition-all duration-300" style="width:0%"></div>
+        </div>
+        <ol id="progressSteps" class="mt-4 grid grid-cols-4 gap-2 text-xs">
+          <li class="step-dot" data-index="0">1) Quality</li>
+          <li class="step-dot" data-index="1">2) Engineering</li>
+          <li class="step-dot" data-index="2">3) Purchasing</li>
+          <li class="step-dot" data-index="3">4) Closure</li>
+        </ol>
+      </div>
+
       <form id="ncrForm" novalidate>
-        <!-- 1/ Quality Representative -->
-        <fieldset>
+        <fieldset class="step" data-step="1">
           <legend>1/ Quality Representative</legend>
           <div class="grid cols-3">
             <div>
-              <label for="ncrNumber" class="req">Identify Process Applicable:</label>
-              <div style="display: block; gap: 20px; margin-top: 8px;">
-                  <label class="radio-item">
-                      <input type="radio" name="idprocessapp" required>
-                      Supplier/Rec-Insp PO
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="idprocessapp" required>
-                      WIP (Production Order)
-                  </label>
+              <label class="req">Applicable Process</label>
+              <div style="display: block; margin-top: 8px;">
+                <label class="radio-item"><input type="radio" name="idprocessapp" required> Supplier / Receiving‑Inspection (PO)</label>
+                <label class="radio-item"><input type="radio" name="idprocessapp" required> WIP (Production Order)</label>
               </div>
             </div>
             <div>
               <label for="suppliername" class="req">Supplier Name</label>
-              <input id="suppliername" name="suppliername" type="text" placeholder="Write supplier name" required />
+              <input id="suppliername" name="suppliername" type="text" placeholder="e.g., ABC Metals Inc." required />
             </div>
             <div>
               <label for="ncrno" class="req">NCR No.</label>
-              <input id="ncrno"  name="ncrno" type="text" placeholder="Required NCR No." required />
-              <label for="poprod" class="req">PO or Prod. No.</label>
-              <input id="poprod" name="poprod" type="text" placeholder="Required" required />
+              <input id="ncrno" name="ncrno" type="text" placeholder="e.g., NCR‑2025‑001" required />
+              <label for="poprod" class="req">PO or Production No.</label>
+              <input id="poprod" name="poprod" type="text" placeholder="e.g., PO‑78431 or PROD‑1209" required />
               <label for="salesorderno" class="req">Sales Order No.</label>
-              <input id="salesorderno" name="salesorderno" type="text" placeholder="Required" required />
+              <input id="salesorderno" name="salesorderno" type="text" placeholder="e.g., SO‑55310" required />
             </div>
           </div>
-          <div class="grid cols-2" style="margin-top:10px; display: block;">
+          <div class="grid cols-2" style="margin-top:10px;">
             <div>
-              <label for="descriptionitem" class="req">Description of Item (including SAP No.)</label>
-              <input id="descriptionitem" name="descriptionitem" type="text" placeholder="Required" required />
+              <label for="descriptionitem" class="req">Item Description (include SAP No.)</label>
+              <input id="descriptionitem" name="descriptionitem" type="text" placeholder="e.g., 4'' flange in A105 steel — SAP 50012345" required />
             </div>
             <div>
-              <label for="department" class="req">Description of Defect</label>
-              <textarea id="department" name="department" placeholder="In as much detail as possible" required=""></textarea>
+              <label for="department" class="req">Defect Description</label>
+              <textarea id="department" name="department" placeholder="Describe defect, location, measurements, and any available evidence" required></textarea>
             </div>
           </div>
-          <div class="grid cols-2" style="margin-top:10px; display: block;">
+          <div class="grid cols-2" style="margin-top:10px;">
             <div>
-              <label for="itemmarkednonconforming" class="req">Item marked Nonconforming</label>
-              <div style="display: block; gap: 20px; margin-top: 8px;">
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" required> Yes
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" required> No
-                  </label>
+              <label class="req">Item marked as Nonconforming</label>
+              <div style="display: block; margin-top: 8px;">
+                <label class="radio-item"><input type="radio" name="itemmarkednonconforming" required> Yes</label>
+                <label class="radio-item"><input type="radio" name="itemmarkednonconforming" required> No</label>
               </div>
             </div>
             <div>
-              <span class="note">
-              Completed NCR to be forwarded to HBC Engineering and
-              Operations Manager complete with any relevant documents
-              attached (pictures, actual measurements, material certs, etc.)
-              </span>
-              <label for="qualityrepresentative" class="req">Quality Representative's Name</label>
-              <input id="qualityrepresentative" name="qualityrepresentative" type="text" placeholder="Required" required />
+              <span class="note">Send the completed NCR to HBC Engineering and the Operations Manager with supporting documents attached (photos, measurements, material certs, etc.).</span>
+              <label for="qualityrepresentative" class="req">Quality Representative Name</label>
+              <input id="qualityrepresentative" name="qualityrepresentative" type="text" placeholder="e.g., Jhon Kennedy" required />
               <label for="date" class="req">Date</label>
               <input id="date" name="date" type="date" required />
             </div>
           </div>
+          <div class="mt-6 flex items-center justify-end gap-3">
+            <button type="button" class="btn-prev hidden">Back</button>
+            <button type="button" class="btn-next">Next</button>
+          </div>
         </fieldset>
 
-        <!-- 2/ Engineering -->
-        <fieldset>
+        <fieldset class="step" data-step="2">
           <legend>2/ Engineering</legend>
           <div class="grid cols-3">
             <div>
-              <label for="partNumber" class="req">Review by CF Engineering</label>
-              <span class="note">
-                indicate disposition by "checking" one of the following
-              </span>
-              <div style="display: block; gap: 20px; margin-top: 8px;">
-                  
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" value="supplier" required> Use As Is
-                  </label>
-
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" value="wip" required> Repair
-                  </label>
-
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" value="wip" required> Rework
-                  </label>
-
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" value="wip" required> Scrap
-                  </label>
-
+              <label class="req">Review by CF Engineering</label>
+              <div style="margin-top: 8px;">
+                <label class="radio-item"><input type="radio" name="reviewenginnering" required> Use As Is</label>
+                <label class="radio-item"><input type="radio" name="reviewenginnering" required> Repair</label>
+                <label class="radio-item"><input type="radio" name="reviewenginnering" required> Rework</label>
+                <label class="radio-item"><input type="radio" name="reviewenginnering" required> Scrap</label>
               </div>
             </div>
-            <div class="grid" style="margin-top:10px; display: block;">
-              <label for="partName">Does Customer require notification of NCR</label>
-              <span class="note">If "Yes" then raise message to customer detailing issues</span>
-              <div style="display: block; gap: 20px; margin-top: 8px;">
-                  <label class="radio-item">
-                      <input type="radio" name="customernotification" value="yes" required> Yes
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="customernotification" value="no" required> No
-                  </label>
-              </div>
-              <div id="customerMessageArea" style="display: none; margin-top: 10px;">
-                  <label for="customerMessage" class="req">Message to Customer:</label>
-                  <textarea id="customerMessage" name="customerMessage" placeholder="Detail issues for customer notification" style="width: 100%;min-height: 51px;"></textarea>
-              </div>
-            </div>
-          </div> 
-          <div class="grid">
             <div>
-              <label for="disposition" class="req">Disposition</label>
-              <span class="note">Sequence of work steps required when "repair" or "rework" indicated</span>
-              <textarea id="disposition" name="disposition" placeholder="Required" style="width: 100%;min-height: 51px;"></textarea>
+              <label for="customernotification">Does the customer require NCR notification?</label>
+              <div style="margin-top: 8px;">
+                <label class="radio-item"><input type="radio" name="customernotification" value="yes" required> Yes</label>
+                <label class="radio-item"><input type="radio" name="customernotification" value="no" required> No</label>
+              </div>
+              <div id="customerMessageArea" style="display:none; margin-top:10px;">
+                <label for="customerMessage" class="req">Message to Customer</label>
+                <textarea id="customerMessage" name="customerMessage" placeholder="Detail the issue, impact, and proposed disposition"></textarea>
+              </div>
             </div>
           </div>
-          <div>
-              <label for="requireupdate" class="req">Does the drawing require updating</label>
-              <div style="display: block; gap: 20px; margin-top: 8px;">
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming"required> Yes
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="itemmarkednonconforming" required> No
-                  </label>
-              </div>
-          </div>
-          <div class="grid cols-3">
-            <div>
-              <label for="revnumber" class="req">Original Rev. Number</label>
-              <input id="revnumber" name="revnumber" type="number" required />
-              <label for="nameenginer" class="req">Name of Engineer</label>
-              <input id="nameenginer" name="nameenginer" type="text" required />
-            </div>
-            <div>
-              <label for="updaterevnumber">Updated Rev. Number</label>
-              <input id="updaterevnumber" name="updaterevnumber" type="number" required/>
-              <label for="revisiondate" >Revision Date</label>
-              <input id="revisiondate" name="revisiondate" type="date" required />
-              <label for="Engineering" class="req">Engineering</label>
-              <input id="Engineering" name="Engineering" type="number" required />
-              <label for="dateenginer" class="req">Date</label>
-              <input id="dateenginer" name="dateenginer" type="text" required />
-            </div>
+          <div class="mt-6 flex items-center justify-end gap-3">
+            <button type="button" class="btn-prev">Back</button>
+            <button type="button" class="btn-next">Next</button>
           </div>
         </fieldset>
 
-        <!-- 3/ Purchasing -->
-        <fieldset>
+        <fieldset class="step" data-step="3">
           <legend>3/ Purchasing</legend>
           <div class="grid">
             <div>
-              <label for="revnumber" class="req">Purchasing's Preliminary Decision</label>
-              <div style="display: block; gap: 20px; margin-top: 8px;">
-                  <label class="radio-item">
-                      <input type="radio" name="preliminarydecision"  required> Return to Supplier for either "rework" or "replacement"
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="preliminarydecision"  required> Rework "In-House"
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="preliminarydecision"  required> Scrap in House
-                  </label>
-                  <label class="radio-item">
-                      <input type="radio" name="preliminarydecision"  required> Defer for HBC Engineering Review
-                  </label>
+              <label class="req">Purchasing Preliminary Decision</label>
+              <div style="margin-top: 8px;">
+                <label class="radio-item"><input type="radio" name="preliminarydecision" required> Return to Supplier</label>
+                <label class="radio-item"><input type="radio" name="preliminarydecision" required> Rework In‑House</label>
+                <label class="radio-item"><input type="radio" name="preliminarydecision" required> Scrap In‑House</label>
+                <label class="radio-item"><input type="radio" name="preliminarydecision" required> Refer to Engineering</label>
               </div>
-              <textarea id="purchasingdecision" name="purchasingdecision" placeholder="Required"></textarea>
             </div>
           </div>
+          <div class="mt-6 flex items-center justify-end gap-3">
+            <button type="button" class="btn-prev">Back</button>
+            <button type="button" class="btn-next">Next</button>
+          </div>
         </fieldset>
-        <div class="footer">
-          <button type="button" title="Save to PDF">Save PDF</button>
-        </div>
+
+        <fieldset class="step" data-step="4">
+          <legend>4/ Quality Closure</legend>
+          <div class="grid">
+            <label for="inspectorname" class="req">Inspector Name</label>
+            <input id="inspectorname" name="inspectorname" type="text" placeholder="e.g., Gerald R. Barden" required />
+          </div>
+          <div class="mt-6 flex items-center justify-end gap-3">
+            <button type="button" class="btn-prev">Back</button>
+            <button type="submit" class="btn-finish">Finish & PDF</button>
+          </div>
+        </fieldset>
       </form>
     </div>
   </div>
